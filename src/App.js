@@ -11,25 +11,24 @@ import MyBytton from "./components/UI/button/MyButton";
 import { usePosts } from "./hooks/usePosts";
 import PostService from "./API/PostService";
 import Loader from "./components/UI/loader/Loader";
+import { useFetching } from "./hooks/UseFetching";
 
 function App() {
   const [posts, setPosts] = useState([]);
 
   const [filter, setFilter] = useState({sort: '', query: ''});
   const [modal, setModal] = useState(false);
-  const [isPostsLoading, setIsPostsLoading] = useState(false);
+  const [fetchPosts, isPostsLoading, postError] = useFetching(async () => {
+    const posts = await PostService.getAll();
+    setPosts(posts);
+  })
 
   const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
 
-  async function fetchPosts() {
-    setIsPostsLoading(true);
-    const posts = await PostService.getAll();
-    setPosts(posts);
-    setIsPostsLoading(false);
-  }
 
   useEffect(() => {
     fetchPosts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const createPost = (newPost) => {
@@ -55,6 +54,9 @@ function App() {
         filter={filter}
         setFilter={setFilter} 
       />
+      {postError &&
+        <h1>An error has occurred - {postError}</h1>
+      }
       {isPostsLoading
         ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}> 
             <Loader />
