@@ -1,12 +1,12 @@
 import React from "react";
 import MyBytton from "./UI/button/MyButton";
 
-export const PostItem = ({ post, number, remove }) => {
+export const PostItem = ({ post, id, remove }) => {
   const {title, body} = post;
   return (
     <div className="post">
         <div className="post__content">
-          <strong>{number} {title}</strong>
+          <strong>{id}. {title}</strong>
           <div>{body}</div>
         </div>
         <div className="post__btns">
