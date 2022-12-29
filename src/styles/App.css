@@ -6,11 +6,15 @@
 
 #root {
   display: flex;
+  align-items: center;
+  flex-direction: column;
   justify-content: center;
 }
 
 .App {
-  width: 800px;
+  /* width: 800px; */
+  width: 100vw;
+  padding: 0 100px;
 }
 
 .post {
@@ -54,5 +58,27 @@
 
 .page__current {
   border: 2px solid orange;
+  font-weight: bold;
+}
+
+.navbar {
+  height: 50px;
+  /* width: 800px; */
+  /* width: 100%; */
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  background: lightgray;
+}
+
+.link:not(:last-child) {
+  margin-right: 10px;
+}
+
+.link {
+  text-decoration: none;
+  color: teal;
+  text-transform: uppercase;
   font-weight: bold;
 }
