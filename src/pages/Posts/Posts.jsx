@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import '../src/styles/App.css';
 import { ClassCounter } from "../../components/ClassCounter";
 import { Counter } from "../../components/Counter";
 import { Input } from "../../components/Input";

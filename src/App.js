@@ -6,7 +6,6 @@ import About from './pages/About/About';
 import Posts from './pages/Posts/Posts';
 import PageNotFound from './components/UI/PageNotFound/PageNotFound';
 import PostIdPage from './pages/PostIdPage';
-// import { privateRoutes } from './router/routes';
 
 function App() {
   return (
